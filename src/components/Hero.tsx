@@ -22,7 +22,7 @@ const Hero = () => {
         <>
            
 
-            <div id='hero' className='mt-15 md:mt-20 mb-[-5px] '>
+            <div id='hero' className='mt-15 md:mt-20 mb-[-5px] grid'>
                 <div className='px-4 md:px-20 text-center pt-20 pb-20 md:pt-20 md:pb-20'>
                     <div className="mx-auto w-[250px] mb-10">
                         <div className="relative rounded-full p-[2px] bg-gradient-to-r from-[#ffffff] via-[#ffffff] to-[#ffffff]">
