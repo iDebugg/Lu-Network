@@ -19,7 +19,7 @@ const NavBar = () => {
 
         <AnchorLink className="anchor-link" offset={50} href="#hero">
           <div
-            className="display: flex gap-3 items-center"
+            className="flex gap-3 items-center "
             onClick={() => setMenu('hero')}
           >
             <img src="/Asset 5_1 1.svg" alt="" className="ToroGlogo" />
@@ -91,9 +91,8 @@ const NavBar = () => {
           
 
         </div>
-        <Link href="/waitlist">
-      <button className='text-white bg-black py-3 px-7 rounded-[29px] text-[16px] font-semibold hidden md:block'>Join Waitlist</button>
-      </Link>
+        <Link href="/waitlist" className='hidden md:block'>
+      <button className='text-white bg-black py-3 px-7 rounded-[29px] text-[16px] font-semibold hidden md:block'>Join Waitlist</button></Link>
       </div>
 
       {isOpen && (
