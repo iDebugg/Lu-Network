@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #f1f1f1;
     --foreground: #ededed;
   }
 }
@@ -24,3 +24,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.FAGbG {
+  background-image: url(../assets/img/Waitlist\ Page.svg); 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position: bottom, bottom ;
+  background-size: contain;
+
+}
+.waitlistBg{
+  background-image: url(../assets/img/Circle\ Wave.svg);
+background-position: center;
+background-repeat: no-repeat;
+}
+.cardsBgs{
+  background-image: url(../assets/img/GroupBg.svg);
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: bottom;
+}
+.howItWorks{
+  background-image: url(../assets/img/loppolo.png);
+}
+.coloredBg{
+  background-image: url(../assets/img/Frame11.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.governanceCard{
+  background-image: 
+  url(../assets/img/frameLu\ 2.png);
+  background-size: cover;
+   background-position-y: top;
+   background-position-x: center;
+   
+}
+
+
