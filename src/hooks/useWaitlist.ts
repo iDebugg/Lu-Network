@@ -1,4 +1,3 @@
-// src/hooks/useWaitlist.ts
 import { useMutation } from '@tanstack/react-query';
 import { submitWaitlist } from '@/services/auth.services';
 import { API_RESPONSE } from '@/types/api.types';
