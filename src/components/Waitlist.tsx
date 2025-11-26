@@ -9,6 +9,8 @@ import Footer from './Footer';
 const Waitlist = () => {
     const [isOpen, setIsOpen] = useState(true);
 
+
+
     return (
         <>
             <NavBar />

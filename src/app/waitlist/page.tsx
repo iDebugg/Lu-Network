@@ -3,14 +3,53 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
+import { useJoinWaitlist } from '@/hooks/useWaitlist';
+import toast, { Toaster }  from 'react-hot-toast';
 
 
 const page = () => {
     const [isOpen, setIsOpen] = useState(true);
+    const [email, setEmail] = useState('');
+    const { mutate, isPending, isSuccess, isError, error } = useJoinWaitlist();
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+    
+        if (!email || !email.includes('@')) {
+            toast('Please enter a valid email address', {
+                style: {
+                    background: '#ef4444',
+                    color: '#ffffff',
+                },
+            });
+            return;
+        }
+    
+        mutate(email, {
+            onSuccess: () => {
+                setEmail(''); 
+                toast('Successfully joined the waitlist!', {
+                    style: {
+                        background: '#22c55e',
+                        color: '#ffffff',
+                    },
+                });
+            },
+            onError: () => {
+                toast('Failed to add email. Please try again.', {
+                    style: {
+                        background: '#ef4444',
+                        color: '#ffffff',
+                    },
+                });
+            },
+        });
+    };
 
     return (
         <>
-           <NavBar />
+        <Toaster position="top-center" />
+            <NavBar />
 
             <div className='mt-15 md:mt-20 FAGbG'>
                 <div className='px-4 md:px-20  text-center pt-20 pb-20 md:pt-50 md:pb-50 waitlistBg '>
@@ -24,16 +63,37 @@ const page = () => {
                     <h1 style={{ fontFamily: "var(--font-monaSans) !important" }}
                         className='text-[#5A5A5A] text-[16px] block md:hidden'>Lu Network empowers users, nodes, and blockchain infrastructure in a secure, community-driven ecosystem. Sign up now to be part of the waitlist.</h1>
                     <div className="flex items-center justify-center text-center mt-7">
-                        <div className="flex items-center justify-between bg-white border border-[#E5E5E5] rounded-[61px] w-full md:w-[500px] pl-5 py-0.5 pr-0.5">
-                            <input
-                                type="text"
-                                placeholder="Type your email"
-                                className="placeholder:text-[#A4A4A4] placeholder:text-[16px] text-[#000000] outline-none w-[200px] md:w-[300px]"
-                            />
-                            <button className="text-white bg-black py-3 px-4 md:px-7 rounded-[29px] text-[14px] md:text-[16px] font-semibold font-[syne]">
-                                Join Waitlist
-                            </button>
-                        </div>
+                        <form onSubmit={handleSubmit} className="w-full md:w-[500px]">
+                            <div className="flex items-center justify-between bg-white border border-[#E5E5E5] rounded-[61px] w-full pl-5 py-0.5 pr-0.5">
+                                <input
+                                    type="email"
+                                    placeholder="Type your email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    disabled={isPending}
+                                    className="placeholder:text-[#A4A4A4] placeholder:text-[16px] text-[#000000] outline-none w-[200px] md:w-[300px] disabled:opacity-50"
+                                />
+                                <button
+                                    type="submit"
+                                    disabled={isPending}
+                                    className="text-white bg-black py-3 px-4 md:px-7 rounded-[29px] text-[14px] md:text-[16px] font-semibold font-[syne] disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {isPending ? 'Joining...' : 'Join Waitlist'}
+                                </button>
+                            </div>
+
+                            {/* {isSuccess && (
+                                <p className="text-green-600 text-sm mt-2">
+                                    Successfully joined the waitlist!
+                                </p>
+                            )} */}
+
+                            {isError && (
+                                <p className="text-red-600 text-sm mt-2">
+                                    {error?.message || 'Failed to join waitlist. Please try again.'}
+                                </p>
+                            )}
+                        </form>
                     </div>
 
                     <div className="flex items-center justify-center text-center mt-7">
@@ -79,10 +139,6 @@ const page = () => {
                                 </div>
                             </div>
                         </div>
-
-
-
-
 
                     </div>
                 </div>
@@ -155,7 +211,7 @@ const page = () => {
                 </div>
 
             </div>
-           <Footer />
+            <Footer />
 
         </>
     );

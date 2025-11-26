@@ -16,11 +16,11 @@ import Governance from './Governance';
 
 const Hero = () => {
     const [isOpen, setIsOpen] = useState(true);
-   
+
 
     return (
         <>
-           
+
 
             <div id='hero' className='mt-15 md:mt-20 mb-[-5px] grid'>
                 <div className='px-4 md:px-20 text-center pt-20 pb-20 md:pt-20 md:pb-20'>
@@ -35,7 +35,7 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    <h1   className='text-[#111111] text-[20px] md:text-[32px] lg:text-[52px] font-bold font-[syne] leading-none mb-5'>
+                    <h1 className='text-[#111111] text-[20px] md:text-[32px] lg:text-[52px] font-bold font-[syne] leading-none mb-5'>
                         Powering <span className="bg-gradient-to-r from-[#67E8F9] to-[#7E22CE] bg-clip-text text-transparent">  Decentralized
                         </span> Internet Access
                     </h1>
@@ -85,7 +85,7 @@ const Hero = () => {
                         </div>
 
                         <div className="flex items-center justify-center w-full">
-                            <img src="/EarthNode.svg" alt=""  className="drop-shadow-[-18px_20px_32px_rgba(0,0,0,0.35)]" />
+                            <img src="/EarthNode.svg" alt="" className="drop-shadow-[-18px_20px_32px_rgba(0,0,0,0.35)]" />
                         </div>
                     </div>
                 </div>
@@ -141,19 +141,19 @@ const Hero = () => {
                     </div>
                 </div>
 
-<HowItWorks />
+                <HowItWorks />
 
                 <div className='coloredBg mb-30'>
                     <ForUsers />
 
-                   <Operators />
+                    <Operators />
 
                 </div>
 
 
-               <Tokenomics />
+                <Tokenomics />
 
-               <Governance />
+                <Governance />
 
 
 

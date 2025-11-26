@@ -1,7 +1,9 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Syne, Poppins  } from "next/font/google";
+import { Geist, Geist_Mono, Syne, Poppins } from "next/font/google";
 import "./globals.css";
-import localFont from "next/font/local"
+import localFont from "next/font/local";
+import { QueryProvider } from "@/components/providers/QueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +25,8 @@ const monaSans = localFont({
   src: './fonts/MonaSans-Regular.ttf',
   variable: "--font-monaSans",
   display: 'swap',
-})
+});
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300","400","500","600","700","800"], 
@@ -46,7 +49,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${monaSans.variable} ${poppins.variable} antialiased`}
       >
-        {children}
+        <QueryProvider>
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );
